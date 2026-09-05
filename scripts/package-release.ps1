@@ -44,7 +44,7 @@ try {
     }
     $report | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $releaseRoot 'package-check.json') -Encoding utf8
     $report | ConvertTo-Json
-    & node 'scripts/checkpoint.mjs' --step '发布安装包生成与校验' --result success --summary "生成v$($manifest.version)安装ZIP，逐文件SHA256和manifest根目录检查通过；不含资料库、源码测试或开发记忆" --next '上传私有仓库Release并核对远程附件'
+    & node 'scripts/checkpoint.mjs' --step '发布安装包生成与校验' --result success --summary "生成v$($manifest.version)安装ZIP，逐文件SHA256和manifest根目录检查通过；不含资料库、源码测试或开发记忆" --next '仅在用户要求发布新版本时上传公开仓库Release，已发布版本不覆盖'
     if ($LASTEXITCODE -ne 0) { throw '安装包已生成，但记忆写入失败' }
 } catch {
     $problem = $_.Exception.Message

@@ -33,7 +33,7 @@ async function request(url, method = 'GET', body, contentType = 'application/jso
 }
 
 try {
-  if (process.argv[2] !== '--publish') throw new Error('此命令会发布私有Release；仅在用户要求发布时使用 node scripts/github-release.mjs --publish');
+  if (process.argv[2] !== '--publish') throw new Error('此命令会发布公开Release；仅在用户要求发布时使用 node scripts/github-release.mjs --publish');
   if (git('remote', 'get-url', 'origin') !== `https://github.com/${repository}.git`) throw new Error('origin 与用户确认的仓库不一致');
   const version = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8')).version;
   if (!/^\d+\.\d+\.\d+$/.test(version)) throw new Error('版本号无效');
@@ -62,7 +62,7 @@ try {
   const identity = await request('https://api.github.com/user');
   if (identity.login !== owner) throw new Error('登录账号与已确认账号不一致');
   const repo = await request(apiRoot);
-  if (!repo.private || repo.full_name !== repository) throw new Error('仓库身份或私有可见性不符合要求');
+  if (repo.private || repo.visibility !== 'public' || repo.full_name !== repository) throw new Error('仓库身份或公开可见性不符合用户当前要求');
   const remote = await request(`${apiRoot}/git/ref/heads/main`);
   if (remote.object.sha !== head) throw new Error('先推送当前提交，远程main与本地HEAD必须一致');
 
@@ -95,17 +95,17 @@ try {
   const tagRef = await request(`${apiRoot}/git/ref/tags/${tag}`);
   if (tagRef.object.type !== 'commit' || tagRef.object.sha !== head) throw new Error('发布标签未指向本次验证提交');
   const report = {
-    result: 'pass', time: new Date().toISOString(), repository, private: true,
+    result: 'pass', time: new Date().toISOString(), repository, private: repo.private, visibility: repo.visibility,
     head, tag, url: release.html_url,
     assets: release.assets.map(({ name, size, digest, state, browser_download_url }) => ({ name, size, digest, state, url: browser_download_url })),
   };
   fs.writeFileSync(path.join(root, 'artifacts', 'github-release.json'), JSON.stringify(report, null, 2));
   console.log(JSON.stringify(report, null, 2));
-  await checkpoint({ step: '私有Release发布并远程核验', result: 'success', summary: `${tag}发布成功；两个附件大小和GitHub SHA256摘要与本地一致；标签对应已推送HEAD，仓库私有。凭据只在进程内使用`, next: '更新STATUS和中文维护说明，提交推送交接记录' });
+  await checkpoint({ step: '公开Release发布并远程核验', result: 'success', summary: `${tag}发布成功；两个附件大小和GitHub SHA256摘要与本地一致；标签对应已推送HEAD，仓库公开。凭据只在进程内使用`, next: '更新STATUS和中文维护说明，提交推送交接记录' });
 } catch (error) {
   // Do not print request headers, credential subprocess results or raw fetch objects.
   const message = error instanceof Error ? error.message : '发布失败';
   console.error(message);
-  await checkpoint({ step: '私有Release发布', result: 'failure', summary: message, next: '核对远程草稿、附件状态和失败原因；不强制覆盖版本' });
+  await checkpoint({ step: '公开Release发布', result: 'failure', summary: message, next: '核对远程草稿、附件状态和失败原因；不强制覆盖版本' });
   process.exitCode = 1;
 } finally { token = ''; }

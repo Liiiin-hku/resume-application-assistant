@@ -10,12 +10,12 @@
 - `node scripts/workspace.mjs check` 类型、单元测试、构建、产物审计。
 - `node scripts/workspace.mjs e2e` 隔离 Chromium 真扩展端到端测试。
 - `node scripts/edge-smoke.mjs` 本机 Edge 隔离加载与导入冒烟；`node scripts/handoff-check.mjs` 新进程交接检查；`node scripts/report.mjs` 从实际 JSON 结果生成测试报告。
-- GitHub 发布：`node scripts/publish-audit.mjs` 检查暂存与历史；`./scripts/package-release.ps1` 校验安装包；仅用户要求发布时执行 `node scripts/github-release.mjs --publish`（固定私有仓库，凭据只经官方 Git 管理器使用）。
+- GitHub 发布：`node scripts/publish-audit.mjs` 检查暂存与历史；`./scripts/package-release.ps1` 校验安装包；仅用户要求发布时执行 `node scripts/github-release.mjs --publish`（固定公开仓库，凭据只经官方 Git 管理器使用）。朋友安装入口见 docs/朋友试用.md。
 - `node scripts/checkpoint.mjs --step "步骤" --result success|failure|pending --summary "脱敏事实" --next "下一步"` 立即更新记忆。
 - src/{ui,background,content,parsers,core,adapters} 是源码；dist/extension 是稳定加载目录。具体实现状态看 STATUS，不能把这些约定当作已验证结果。
 
 ## 修改边界
-仅在项目根目录写代码、文档、测试、产物。破坏性更改重要旧文件前备份并验证可读；不删除未知文件。不修改全局执行策略、Codex 全局配置或系统安全设置。2026-09-05 用户明确授权将本项目上传到 Liiiin-hku 的 GitHub，默认私有仓库；仅此项目的源码、文档、虚构测试和开发记忆可推送。远程实际状态见 STATUS；不公开仓库、不操作其他仓库、不强推。data/private、浏览器资料目录、凭据和个人导出备份均不得提交或打包。
+仅在项目根目录写代码、文档、测试、产物。破坏性更改重要旧文件前备份并验证可读；不删除未知文件。不修改全局执行策略、Codex 全局配置或系统安全设置。2026-09-05 用户明确授权上传并随后公开 Liiiin-hku/resume-application-assistant，供其他人读取、下载和安装使用；此新要求替代旧私有约束。仅此项目的源码、文档、虚构测试和脱敏开发记忆可推送。普通访客不授予原仓库写入权；不添加有写入权限的协作者，不操作其他仓库、不强推。再次改变可见性或授权其他账号写入须有用户明确要求。data/private、浏览器资料目录、凭据和个人导出备份均不得提交或打包。
 
 资料与开发记忆分开：不把真实简历、登录信息、密钥、证件号码写入记忆、测试、日志。只用明确虚构资料测试。原文/手填/建议分开，未确认事实不得自动填写。不推断日期、学位、成绩、出生地或薪资。证件号码不持久化。不得自动提交、登录、验证码、勾选授权声明。无全站默认权限、远程代码、遥测或 AI 依赖。
 

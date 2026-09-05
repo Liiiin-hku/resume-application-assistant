@@ -12,6 +12,6 @@
 
 开发记忆在 memory/；个人库在浏览器扩展本地存储；用户自放原件在 data/private/，彼此不自动同步。开发记忆只记脱敏工程事实。
 
-GitHub：用户确认账号 Liiiin-hku，明确授权上传本项目。私有仓库 https://github.com/Liiiin-hku/resume-application-assistant；仅工程及虚构测试入 Git，可安装包以 Release 发布。个人资料和凭据不上传。实际同步进度以 STATUS 为准。
+GitHub：用户确认账号 Liiiin-hku，并于 2026-09-05 明确要求公开本项目供其他人读取、下载和安装使用，替代旧私有约束。公开仓库 https://github.com/Liiiin-hku/resume-application-assistant；仅工程及虚构测试入 Git，可安装包以 Release 发布。普通访客不授予原仓库写权限；朋友入口 docs/朋友试用.md。个人资料和凭据不上传。实际同步与权限核验进度以 STATUS 为准。
 
 模块和实际状态以源码及 STATUS 核实。测试环境、实际通过项和未执行项见 docs/测试报告.md。默认串行维护。不同 worktree 需显式合并，不实时共享文件。
