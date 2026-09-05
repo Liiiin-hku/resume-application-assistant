@@ -1,0 +1,40 @@
+{
+  "description": "本项目脱敏工程事件记忆；首次和定义变化后必须在 Codex /hooks 中审阅信任。不会自动判断业务成功。",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"E:/Codex_Projects/简历网申投递助手/scripts/hooks.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "^(Bash|apply_patch|Edit|Write)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"E:/Codex_Projects/简历网申投递助手/scripts/hooks.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"E:/Codex_Projects/简历网申投递助手/scripts/hooks.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

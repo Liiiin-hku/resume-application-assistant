@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh">
+  <meta charset="utf-8" /><title>虚构校招 · 原生表单</title
+  ><style>
+    body {
+      max-width: 760px;
+      margin: 30px auto;
+      font: 16px sans-serif;
+    }
+    fieldset {
+      margin: 20px 0;
+      padding: 20px;
+    }
+    label {
+      display: block;
+      margin: 15px;
+    }
+    input,
+    select,
+    textarea {
+      margin-left: 12px;
+      padding: 8px;
+    }
+    button {
+      padding: 12px;
+    }
+  </style>
+  <h1>虚构企业 · 申请表（本地测试）</h1>
+  <form id="application">
+    <fieldset>
+      <legend>基本信息</legend>
+      <label>姓名<input name="name" /></label
+      ><label>电子邮箱<input type="email" name="email" /></label
+      ><label>手机号码<input type="tel" name="phone" /></label
+      ><label>现居地<input name="currentCity" value="网页已有城市" /></label
+      ><label>出生地<input name="birthplace" /></label>
+    </fieldset>
+    <fieldset>
+      <legend>性别</legend>
+      <label><input type="radio" name="gender" value="female" />女</label
+      ><label><input type="radio" name="gender" value="male" />男</label>
+    </fieldset>
+    <fieldset>
+      <legend>本科教育经历</legend>
+      <label>学校名称<input name="school" /></label
+      ><label>专业<input name="major" /></label
+      ><label
+        >学历<select name="qualification">
+          <option value="">请选择</option>
+          <option value="undergrad">本科</option>
+          <option value="master">硕士</option>
+        </select></label
+      ><label>入学时间<input name="educationStartDate" type="month" /></label
+      ><label>毕业时间<input name="educationEndDate" type="date" /></label
+      ><label>GPA<input name="gpa" /></label>
+    </fieldset>
+    <fieldset>
+      <legend>紧急联系人</legend>
+      <label>姓名<input name="emergencyName" /></label
+      ><label>手机号码<input name="emergencyPhone" /></label>
+    </fieldset>
+    <fieldset>
+      <legend>意向城市</legend>
+      <label><input type="checkbox" name="cities" value="a" />示例市甲</label
+      ><label><input type="checkbox" name="cities" value="b" />示例市乙</label>
+    </fieldset>
+    <label>期望薪资<input name="expectedSalary" /></label
+    ><label>证件号码<input name="nationalId" /></label
+    ><label>验证码<input name="captcha" /></label
+    ><label>密码<input name="password" type="password" /></label
+    ><input type="hidden" name="hidden" value="not-visible" />
+    <label>附件简历<input type="file" name="resume" /></label
+    ><label
+      ><input
+        type="checkbox"
+        name="privacy"
+      />我同意隐私协议和背景调查授权</label
+    ><button type="submit">最终提交申请</button>
+  </form>
+  <p id="submitted">未提交</p>
+  <script>
+    window.submitCount = 0;
+    document.querySelector("form").onsubmit = (e) => {
+      e.preventDefault();
+      window.submitCount++;
+      document.querySelector("#submitted").textContent = "已提交";
+    };
+  </script>
+</html>

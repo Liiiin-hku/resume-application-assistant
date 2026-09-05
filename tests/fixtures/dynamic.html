@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh">
+  <meta charset="utf-8" /><title>虚构动态受控表单</title
+  ><style>
+    body {
+      max-width: 700px;
+      margin: 40px auto;
+      font: 16px sans-serif;
+    }
+    label {
+      display: block;
+      margin: 22px;
+    }
+    input {
+      padding: 10px;
+    }
+  </style>
+  <h1>动态受控表单（虚构测试）</h1>
+  <div id="app">正在异步加载…</div>
+  <p id="model"></p>
+  <button id="mode">允许手机号通过校验</button
+  ><button id="mutate">替换表单结构</button>
+  <script>
+    window.model = { name: "", email: "", phone: "" };
+    window.allowPhone = false;
+    window.submitCount = 0;
+    setTimeout(() => {
+      document.querySelector("#app").innerHTML =
+        '<form><fieldset><legend>基本信息</legend><label>姓名<input name="name"></label><label>电子邮箱<input name="email" type="email"></label><label>手机号码<input name="phone" type="tel"></label></fieldset><button type="submit">提交</button></form>';
+      document.querySelector("form").onsubmit = (e) => {
+        e.preventDefault();
+        window.submitCount++;
+      };
+      for (const input of document.querySelectorAll("input")) {
+        let tracked = "";
+        Object.defineProperty(input, "value", {
+          get() {
+            return Object.getOwnPropertyDescriptor(
+              HTMLInputElement.prototype,
+              "value",
+            ).get.call(this);
+          },
+          set(v) {
+            tracked = v;
+            Object.getOwnPropertyDescriptor(
+              HTMLInputElement.prototype,
+              "value",
+            ).set.call(this, v);
+          },
+          configurable: true,
+        });
+        input.addEventListener("input", () => {
+          if (input.value === tracked) return;
+          window.model[input.name] = input.value;
+          document.querySelector("#model").textContent = JSON.stringify(
+            window.model,
+          );
+          if (input.name === "phone" && !window.allowPhone)
+            setTimeout(() => {
+              Object.getOwnPropertyDescriptor(
+                HTMLInputElement.prototype,
+                "value",
+              ).set.call(input, "");
+              window.model.phone = "";
+              document.querySelector("#model").textContent = JSON.stringify(
+                window.model,
+              );
+            }, 140);
+        });
+      }
+    }, 400);
+    document.querySelector("#mode").onclick = () => {
+      window.allowPhone = true;
+    };
+    document.querySelector("#mutate").onclick = () => {
+      document.querySelector("#app").innerHTML =
+        '<label>姓名<input name="name"></label><label>新字段<input name="unknown"></label>';
+    };
+  </script>
+</html>

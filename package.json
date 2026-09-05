@@ -1,0 +1,34 @@
+{
+  "name": "resume-application-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "本地个人网申辅助扩展",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "check": "node scripts/workspace.mjs check"
+  },
+  "dependencies": {
+    "mammoth": "^1.12.2",
+    "pdfjs-dist": "^6.3.289"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/chrome": "^0.2.8",
+    "@types/node": "^26.4.1",
+    "docx": "^9.7.1",
+    "esbuild": "^0.28.2",
+    "pdf-lib": "^1.17.1",
+    "prettier": "^3.9.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.0"
+  }
+}

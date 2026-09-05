@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh">
+  <meta charset="utf-8" /><title>虚构多经历与复杂控件</title
+  ><style>
+    body {
+      max-width: 750px;
+      margin: 30px auto;
+      font: 16px sans-serif;
+    }
+    fieldset {
+      margin: 20px;
+      padding: 20px;
+    }
+    label {
+      display: block;
+      margin: 12px;
+    }
+    input {
+      padding: 9px;
+    }
+  </style>
+  <h1>多条经历（虚构测试）</h1>
+  <form>
+    <fieldset>
+      <legend>教育经历 1</legend>
+      <label>学校名称<input name="school1" /></label
+      ><label>专业<input name="major1" /></label>
+    </fieldset>
+    <fieldset>
+      <legend>教育经历 2</legend>
+      <label>学校名称<input name="school2" /></label
+      ><label>专业<input name="major2" /></label>
+    </fieldset>
+    <fieldset>
+      <legend>项目经历 1</legend>
+      <label>项目名称<input name="projectName" /></label
+      ><label>开始时间<input type="month" name="projectStart" /></label
+      ><label>项目内容<textarea name="projectDescription"></textarea></label>
+    </fieldset>
+    <fieldset>
+      <legend>学校搜索</legend>
+      <label
+        >毕业院校<input
+          role="combobox"
+          aria-controls="school-options"
+          name="searchSchool"
+          autocomplete="off"
+      /></label>
+      <div id="school-options" role="listbox" hidden>
+        <div role="option">相似学校</div>
+        <div role="option">虚构大学甲</div>
+      </div>
+    </fieldset>
+    <label>内部备注<input name="internalNote" /></label
+    ><label
+      >姓名 / 手机号码<input name="conflict" placeholder="电子邮箱"
+    /></label>
+    <button type="button" id="add">新增教育经历</button
+    ><label><input type="checkbox" id="terms" />我已阅读并同意法律声明</label
+    ><button type="submit">确认投递</button>
+  </form>
+  <iframe title="不可处理框架" src="about:blank"></iframe>
+  <div id="shadow-host"></div>
+  <script>
+    window.addCount = 0;
+    window.submitCount = 0;
+    document.querySelector("#add").onclick = () => window.addCount++;
+    document.querySelector("form").onsubmit = (e) => {
+      e.preventDefault();
+      window.submitCount++;
+    };
+    document.querySelector("[role=combobox]").oninput = () =>
+      (document.querySelector("#school-options").hidden = false);
+    document
+      .querySelector("#shadow-host")
+      .attachShadow({ mode: "closed" }).innerHTML = '<input aria-label="姓名">';
+  </script>
+</html>

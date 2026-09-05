@@ -1,0 +1,14 @@
+node_modules/
+.pnpm-store/
+dist/
+data/private/*
+!data/private/.gitkeep
+artifacts/*
+!artifacts/.gitkeep
+memory/.lock
+memory/*.tmp
+memory/.events.json
+.env*
+*.log
+*.tsbuildinfo
+tests/fixtures/react.bundle.js*

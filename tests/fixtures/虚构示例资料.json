@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "id": "fictional-profile",
+  "name": "虚构示例，请勿用于真实投递",
+  "demo": true,
+  "revision": 0,
+  "records": [
+    {
+      "id": "basic-demo",
+      "group": "basics",
+      "title": "虚构测试员甲",
+      "facts": {
+        "name": {
+          "value": "虚构测试员甲",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "phone": {
+          "value": "13800000000",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "email": {
+          "value": "fictional@example.invalid",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "city": {
+          "value": "示例市甲",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "gender": {
+          "value": "女",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "birthplace": {
+          "value": "出生示例地",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        }
+      }
+    },
+    {
+      "id": "edu-undergrad",
+      "group": "education",
+      "title": "虚构大学甲 / 本科",
+      "facts": {
+        "school": {
+          "value": "虚构大学甲",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "major": {
+          "value": "虚构机械工程",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "qualification": {
+          "value": "本科",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "startDate": {
+          "value": "2020.09",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "endDate": {
+          "value": "2024年6月30日",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        }
+      }
+    },
+    {
+      "id": "edu-master",
+      "group": "education",
+      "title": "虚构大学乙 / 硕士",
+      "facts": {
+        "school": {
+          "value": "虚构大学乙",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "major": {
+          "value": "虚构机器人",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "qualification": {
+          "value": "硕士",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "startDate": {
+          "value": "2024-09",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "endDate": {
+          "value": "至今",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        }
+      }
+    },
+    {
+      "id": "project-demo",
+      "group": "projects",
+      "title": "虚构项目甲",
+      "facts": {
+        "name": {
+          "value": "虚构装配测试项目",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "startDate": {
+          "value": "2025-03",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        },
+        "description": {
+          "value": "虚构说明：只用于本地表单测试，不代表真实经历。",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        }
+      }
+    },
+    {
+      "id": "job-demo",
+      "group": "job",
+      "title": "虚构求职信息",
+      "facts": {
+        "desiredCity": {
+          "value": "示例市甲、示例市乙",
+          "confirmed": true,
+          "source": "manual",
+          "sourceId": "明确虚构示例",
+          "excerpt": ""
+        }
+      }
+    }
+  ]
+}
