@@ -19,3 +19,6 @@ OpenJobAutofill 只借鉴交互与模块思路，不复制源码；其 content �
 
 ## 2026-09-05 · 项目记忆
 AGENTS + PROJECT/STATUS/DECISIONS + 每会话独立 Markdown + checkpoint 原子写/锁/有界日志。Hooks 仅配置支持的 SessionStart/PostToolUse/Stop；必须用户信任后才运行，不绕过信任。本会话只有语义 checkpoint 和合成测试，不能宣称逐工具自动记忆已激活。
+
+## 2026-09-05 · GitHub 上传授权
+用户新指令明确要求上传整个插件工程，并确认目标账号 Liiiin-hku；替代初始“不建远程、不推送”的限制。本项目使用私有仓库 resume-application-assistant。源码、锁文件、虚构测试和脱敏开发记忆进入 Git；可安装插件包放 Release；个人资料、凭据、依赖缓存和测试浏览器目录不上传。不创建公开仓库，不改变其他项目。远程是否已同步以 STATUS 和实时分支校验为准。

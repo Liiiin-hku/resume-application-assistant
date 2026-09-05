@@ -38,4 +38,12 @@ node scripts/workspace.mjs e2e
 
 完整操作见 [使用说明](docs/使用说明.md)；后续开发见 [维护说明](docs/维护说明.md)；选型依据见 [参考项目](docs/参考项目.md)。
 
+## GitHub 备份与更新
+
+项目私有仓库：[Liiiin-hku/resume-application-assistant](https://github.com/Liiiin-hku/resume-application-assistant)。源码、依赖锁文件、虚构测试、中文文档和脱敏开发记忆随 Git 保存。可直接安装的版本包放在 [Releases](https://github.com/Liiiin-hku/resume-application-assistant/releases)，上传状态以 memory/STATUS.md 为准。
+
+GitHub 的 Source code ZIP 是源码，需要构建；名为 `resume-application-assistant-v版本号.zip` 的 Release 附件才是可直接加载的插件。个人简历、资料 JSON 备份、凭据、node_modules 和测试浏览器不会上传。插件不会自动联网检查 GitHub 更新。
+
+以后可以直接让 Codex“读取本项目记忆，修改某功能，测试后将更新推送到该私有仓库”。换电脑时克隆源码并按维护说明安装依赖、构建；只使用插件时下载 Release 安装包即可。
+
 > 路径说明：本次会话实际打开的是 `E:\Codex_Projects\简历网申投递助手`。用户正文的另一种 `E:\Codex\_Projects\…` 路径不存在，已说明按当前工作区实施；没有创建第二套项目。
