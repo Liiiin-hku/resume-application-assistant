@@ -1,8 +1,12 @@
 # 当前状态
 
-阶段：0.1.0 已构建，可加载；本地功能验收通过。用户新要求将整个插件工程上传 GitHub，并确认账号 Liiiin-hku；正在完成首次远程同步。
+阶段：0.1.0 已构建，可加载；本地功能验收通过。用户确认账号 Liiiin-hku 后，首次 GitHub 工程上传及安装版本发布均已完成。
 
-远程：已创建私有仓库 https://github.com/Liiiin-hku/resume-application-assistant，连接器核验 push/admin 可用；已设置本项目 origin。本机 Git 首次设备授权由用户明确批准并完成，非交互远程访问通过；目前等待首次 push 完成，不能记为已上传。安装 ZIP 已生成，202 文件逐一通过 SHA256 校验；暂存67文件和75历史/暂存blob审计通过，未包含个人资料、凭据或缓存。
+远程：私有仓库 https://github.com/Liiiin-hku/resume-application-assistant；本项目 origin 已关联，main 已推送并通过 ls-remote 比对。68 个必要工程文件包含源码、锁文件、虚构测试、文档和开发记忆；个人资料、凭据、缓存未上传。本机 Git 凭据管理器的实际 OAuth 权限和保存登录由用户明确批准；未读取到模型上下文或记录任何凭据。
+
+Release：https://github.com/Liiiin-hku/resume-application-assistant/releases/tag/v0.1.0 已发布，标签指向 349063d05ba554de8d441a0d1ac735bae46ce70f。附件 resume-application-assistant-v0.1.0.zip（2475346 字节、202 文件）和 SHA256SUMS.txt 均为 uploaded，GitHub 返回的 SHA256 与本地一致。ZIP SHA256：1069ca0925a64f2811ca170bcf9d782fae03781cd2beed11de31107f2e5e6ba4。后续 main 中交接文档提交不移动已发布标签。
+
+发布方式：浏览器附件上传因文件 URL 权限返回 Not allowed，未调整浏览器权限；改用已获用户授权的本机 Git 凭据，通过 scripts/github-release.mjs 的固定仓库官方 API 完成。脚本的凭据仅在进程内使用，不输出、不持久化到项目。原始核验结果在 artifacts/github-release.json，网页也已显示已发布版本。
 
 - 当前目录为空起步，已初始化本地 Git；没有读取相邻项目或真实简历。
 - Windows PowerShell，Node 24.19.0，pnpm 11.19.0；npm 不在 PATH；Git 可用。
@@ -21,11 +25,11 @@
 
 记忆：checkpoint 可运行，合成 Hook 的启动/事件/Stop、失败状态/并发锁/去重已测试。Codex 0.153.1 声明 Hooks stable=true；.codex/hooks.json 已交付，但未由用户信任，也未观察到真实 Hook 触发。当前依赖人工语义 checkpoint。
 
-下一步：用户在 Edge 手动加载 dist/extension，先用虚构资料练习扫描和填写；随后提供首个实际岗位链接并完成必要登录，以只扫描模式核对真实页面，补站点回归。新维护会话先核对 Git 与本文件；按需在新 Codex 会话通过 /hooks 审阅并信任项目 Hook。
+下一步：后续修改先核对 origin、Git 状态和本文件；完成相应回归后按用户要求推送 main，发布新安装包需提升版本，不覆盖 v0.1.0。产品验证优先做 Edge 人工安装及首个真实岗位只扫描核对，再补站点回归。项目 Hook 按需在新 Codex 会话中经 /hooks 审阅信任，GitHub 上传不代表 Hook 已启用。
 
 <!-- checkpoint -->
-最近步骤：官方API发布脚本实现
-结果：pending；新增固定仓库白名单的官方Release发布脚本；使用用户已批准的Git凭据，仅进程内认证，先草稿、校验附件GitHub SHA256后发布。语法检查通过，远程执行待验证；插件生产代码未改变
-下一步：提交并推送发布脚本，再实际运行发布，按远程返回值验证
+最近步骤：GitHub上传和Release最终交接
+结果：success；用户确认账号和本机Git授权后，68个工程文件与提交历史已上传私有仓库。v0.1.0已发布，安装ZIP及SHA256文件远程状态uploaded，大小与GitHub SHA256均匹配；发布标签349063d。生产插件代码未更改，沿用此前21单元和11E2E通过结果；新增打包及API发布已实际执行通过
+下一步：用户可从私有仓库维护源码或下载Release；后续修正读取AGENTS和STATUS，测试后按要求推送，不覆盖旧版本
 记录：sessions/2026-09-05-01a06f31-9000-7821-bd48-761f6b62f6f7.md
-时间：2026-09-05T03:22:29.280Z
+时间：2026-09-05T03:23:54.366Z

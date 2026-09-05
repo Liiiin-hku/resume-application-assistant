@@ -10,6 +10,7 @@
 - `node scripts/workspace.mjs check` 类型、单元测试、构建、产物审计。
 - `node scripts/workspace.mjs e2e` 隔离 Chromium 真扩展端到端测试。
 - `node scripts/edge-smoke.mjs` 本机 Edge 隔离加载与导入冒烟；`node scripts/handoff-check.mjs` 新进程交接检查；`node scripts/report.mjs` 从实际 JSON 结果生成测试报告。
+- GitHub 发布：`node scripts/publish-audit.mjs` 检查暂存与历史；`./scripts/package-release.ps1` 校验安装包；仅用户要求发布时执行 `node scripts/github-release.mjs --publish`（固定私有仓库，凭据只经官方 Git 管理器使用）。
 - `node scripts/checkpoint.mjs --step "步骤" --result success|failure|pending --summary "脱敏事实" --next "下一步"` 立即更新记忆。
 - src/{ui,background,content,parsers,core,adapters} 是源码；dist/extension 是稳定加载目录。具体实现状态看 STATUS，不能把这些约定当作已验证结果。
 
